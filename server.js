@@ -19,10 +19,25 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "/develop/public/index.html"));
 });
 
-
-
 app.post("notesfile", function(req, res) {
   // Post notes logic goes here
+})
+
+app.get("/api/notes", function(req, res){
+  // Should read the db.json file and return all saved notes as JSON
+})
+
+app.post("/api/notes", function(req, res){
+  // Should receive a new note to save on the request body, add it to 
+  // the db.json file, and return the new note to the client 
+})
+
+app.delete("/api/notes:id", function(req, res){
+  // Should receive a query parameter containing the ID of a note to 
+  // delete. This means you'll need to find a way to give each note a unique
+  // ID when it's saved. In order to delete a note, you'll need to read all the
+  // notes from the db.json file, remove the note with the given ID property,
+  // and then rewrite the notes to the db.json file. 
 })
 
 app.listen(PORT, function() {
