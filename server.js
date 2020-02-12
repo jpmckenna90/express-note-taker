@@ -1,6 +1,8 @@
 // Require dependencies
-var express = require("express");
-var path = require("path");
+const express = require("express");
+const path = require("path");
+const fs = require("fs");
+const db = require("../express-note-taker/Develop/db/db.json")
 
 // Set up express app
 var app = express();
@@ -15,7 +17,7 @@ app.get("/notes", function(req, res) {
   res.sendFile(path.join(__dirname, "/develop/public/notes.html"));
 });
 
-app.get("*", function(req, res) {
+app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "/develop/public/index.html"));
 });
 
@@ -24,7 +26,7 @@ app.post("notesfile", function(req, res) {
 })
 
 app.get("/api/notes", function(req, res){
-  // Should read the db.json file and return all saved notes as JSON
+  return res.json(db)
 })
 
 app.post("/api/notes", function(req, res){
