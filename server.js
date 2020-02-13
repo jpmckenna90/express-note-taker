@@ -42,6 +42,7 @@ app.delete(`/api/notes/:id`, function(req, res) {
   fs.writeFile("develop/db/db.json", JSON.stringify(db), err => {
     if (err) throw err;
   });
+  res.send();
 });
 
 app.listen(PORT, function() {
