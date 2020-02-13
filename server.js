@@ -35,15 +35,13 @@ app.post("/api/notes", function(req, res) {
 });
 
 app.delete(`/api/notes/:id`, function(req, res) {
-  console.log(req.params);
-  // okay, found the ID in the request...now to use it! 
-
   
-  // Should receive a query parameter containing the ID of a note to
-  // delete. This means you'll need to find a way to give each note a unique
-  // ID when it's saved. In order to delete a note, you'll need to read all the
-  // notes from the db.json file, remove the note with the given ID property,
-  // and then rewrite the notes to the db.json file.
+  const chosen = req.params.id;
+  const index = db.findIndex( note => note.id === chosen);
+  db.splice(index, 1);
+  fs.writeFile("develop/db/db.json", JSON.stringify(db), err => {
+    if (err) throw err;
+  });
 });
 
 app.listen(PORT, function() {
