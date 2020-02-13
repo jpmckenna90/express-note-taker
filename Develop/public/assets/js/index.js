@@ -49,11 +49,19 @@ var renderActiveNote = function() {
   }
 };
 
+let id = 0;
+var getId = function() {
+  id++;
+  return `note${id}`;
+}
+
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
   var newNote = {
     title: $noteTitle.val(),
-    text: $noteText.val()
+    text: $noteText.val(),
+    id: getId()
+
   };
 
   saveNote(newNote).then(function(data) {
