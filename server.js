@@ -2,7 +2,7 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-const db = require("../express-note-taker/Develop/db/db.json");
+const db = require("./Develop/db/db.json");
 
 // Set up express app
 var app = express();
