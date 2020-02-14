@@ -11,15 +11,15 @@ var PORT = process.env.PORT || 3000;
 // Set up express app to handle data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "/develop/public")));
+app.use(express.static(path.join(__dirname, "./develop/public")));
 
 // Routes - one to index, one to notes
 app.get("/notes", function(req, res) {
-  res.sendFile(path.join(__dirname, "/develop/public/notes.html"));
+  res.sendFile(path.join(__dirname, "./develop/public/notes.html"));
 });
 
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "/develop/public/index.html"));
+  res.sendFile(path.join(__dirname, "./develop/public/index.html"));
 });
 
 app.get("/api/notes", function(req, res) {
