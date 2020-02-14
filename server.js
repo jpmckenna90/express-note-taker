@@ -28,7 +28,7 @@ app.get("/api/notes", function(req, res) {
 
 app.post("/api/notes", function(req, res) {
   db.push(req.body);
-  fs.writeFile("develop/db/db.json", JSON.stringify(db), err => {
+  fs.writeFile("./develop/db/db.json", JSON.stringify(db), err => {
     if (err) throw err;
   });
   res.send();
@@ -39,7 +39,7 @@ app.delete(`/api/notes/:id`, function(req, res) {
   const chosen = req.params.id;
   const index = db.findIndex( note => note.id === chosen);
   db.splice(index, 1);
-  fs.writeFile("develop/db/db.json", JSON.stringify(db), err => {
+  fs.writeFile("./develop/db/db.json", JSON.stringify(db), err => {
     if (err) throw err;
   });
   res.send();
